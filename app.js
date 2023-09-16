@@ -1,6 +1,15 @@
 const express = require('express');
 const app = express();
 
+const listViewRouter = require("./list-view-router");
+const listEditRouter = require("./list-edit-router");
+
+app.use(express.json());
+
+app.use("/contact/list-view", listViewRouter);
+app.use("/contact/list-edit", listEditRouter);
+
+
 app.get('/tasks', (req, res) => {
   const tasks = [
     {
